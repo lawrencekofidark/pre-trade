@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pre-Trade Checklist</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap">
+<style>
+:root{--ink:#000;--paper:#fff;--grey:#c8c8c8;--dots:#e6e6e6;--dot2:#b9b9b9;--mute:#4a4a4a;--accent:#3b5bff;--buy:#16a34a;--sell:#dc2626;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#f4f4f4;--paper:#141414;--grey:#2f2f2f;--dots:#1b1b1b;--dot2:#2c2c2c;--mute:#a0a0a0;--accent:#8aa0ff}}
+:root[data-theme="light"]{--ink:#000;--paper:#fff;--grey:#c8c8c8;--dots:#e6e6e6;--dot2:#b9b9b9;--mute:#4a4a4a;--accent:#3b5bff}
+:root[data-theme="dark"]{--ink:#f4f4f4;--paper:#141414;--grey:#2f2f2f;--dots:#1b1b1b;--dot2:#2c2c2c;--mute:#a0a0a0;--accent:#8aa0ff}
+*{box-sizing:border-box}
+html{background:#000;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;padding:10px;background:#000;font-family:"Baloo 2",Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-weight:500;line-height:1.4}
+.shell{background:var(--paper);color:var(--ink)}
+.nav{display:flex;align-items:center;gap:12px;background:var(--grey);border-bottom:3px solid var(--ink);padding:10px 14px}
+.logo{width:30px;height:30px;border:3px solid var(--ink);background:var(--paper);display:grid;place-items:center}
+.logo::after{content:"";width:12px;height:12px;border:3px solid var(--ink);border-radius:50%}
+.nav strong{font-size:18px;font-weight:700}.sp{flex:1}
+.btn{font:inherit;font-size:14px;font-weight:700;color:var(--ink);background:var(--grey);border:3px solid var(--ink);padding:3px 12px;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
+.nav .btn{background:var(--paper)}
+.btn:active{transform:translate(3px,3px);box-shadow:none}
+.hero{padding:42px 20px 36px;max-width:720px;margin:0 auto}
+h1{font-size:clamp(42px,10vw,68px);line-height:.95;margin:0 0 14px;font-weight:800;letter-spacing:-.01em}
+.hero p{margin:0;font-size:18px;max-width:460px}
+.stage{background-color:var(--dots);background-image:radial-gradient(var(--dot2) 1px,transparent 1.3px);background-size:6px 6px;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:30px 16px 110px}
+.col{max-width:680px;margin:0 auto}
+.card{background:var(--paper);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);margin:0 6px 28px 0;transition:opacity .2s}
+.card.locked{opacity:.45;pointer-events:none}
+.tb{display:flex;align-items:center;gap:6px;background:var(--grey);border-bottom:3px solid var(--ink);padding:5px 10px;font-size:13px;font-weight:700}
+.tb b{width:13px;height:13px;border:2.5px solid var(--ink);border-radius:50%;background:var(--paper)}
+.tb span{flex:1;text-align:center;margin-right:32px}
+.body{padding:18px}
+.step{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+.num{width:30px;height:30px;border:3px solid var(--ink);background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800}
+.card.done .num{background:var(--buy)}
+h2{font-size:22px;margin:0;font-weight:800}
+.seg{display:flex;gap:10px;flex-wrap:wrap}
+.seg button{flex:1;min-width:110px;padding:8px 10px;font:inherit;font-weight:700;font-size:15px;color:var(--ink);background:var(--grey);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer}
+.seg button.on{background:var(--ink);color:var(--paper);box-shadow:none;transform:translate(3px,3px)}
+.seg button.on.buy{background:var(--buy);color:#fff}
+.seg button.on.sell{background:var(--sell);color:#fff}
+label.item{display:flex;gap:12px;align-items:flex-start;padding:9px 6px;cursor:pointer}
+label.item:hover{background:var(--dots)}
+label.item input{appearance:none;-webkit-appearance:none;width:24px;height:24px;border:3px solid var(--ink);background:var(--paper);display:grid;place-items:center;flex:none;margin:2px 0 0;cursor:pointer}
+label.item input:checked{background:var(--accent)}
+label.item input:checked::after{content:"✓";color:#fff;font-weight:800;font-size:16px;line-height:1}
+label.item small{display:block;color:var(--mute);font-size:13px;font-weight:500}
+.or{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--mute);margin:4px 0;font-size:13px}
+.or::before,.or::after{content:"";flex:1;border-top:3px dotted var(--ink)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+@media(max-width:520px){.row{grid-template-columns:1fr}}
+.field span{display:block;font-size:13px;font-weight:700;margin-bottom:3px}
+select,input[type=text]{width:100%;padding:7px 10px;font:inherit;font-size:15px;color:var(--ink);background:var(--paper);border:3px solid var(--ink);border-radius:0}
+select{background:var(--grey);font-weight:700}
+.foot{padding:16px;text-align:center;font-weight:600;font-size:14px;color:var(--mute)}
+.verdict{position:fixed;left:10px;right:10px;bottom:0;background:var(--grey);border-top:3px solid var(--ink);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));color:var(--ink)}
+.vin{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.vt{font-weight:800;font-size:16px;min-width:150px;line-height:1.15}
+.bar{flex:1;height:18px;border:3px solid var(--ink);background:var(--paper)}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s,background .3s}
+.go{font:inherit;font-weight:800;font-size:15px;color:#fff;background:var(--buy);border:3px solid var(--ink);padding:3px 14px;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
+.go:disabled{background:var(--paper);color:var(--mute);box-shadow:none;cursor:not-allowed}
+@media(max-width:520px){.vt{min-width:90px;font-size:14px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<nav class="nav"><div class="logo"></div><strong>Pre-Trade</strong><span class="sp"></span><button class="btn" id="theme">Theme</button><button class="btn" id="reset">Reset</button></nav>
+
+<section class="hero">
+<h1>Check first.<br>Trade second.</h1>
+<p>No box, no trade. Work top-down: direction, 4H zone, then the lower timeframe.</p>
+</section>
+
+<main class="stage"><div class="col">
+
+<section class="card" id="s1">
+<div class="tb"><b></b><b></b><span>step-1-direction.html</span></div>
+<div class="body">
+<div class="step"><div class="num">1</div><h2>Direction (Daily / 4H)</h2></div>
+<div class="seg" id="bias">
+<button data-v="buy" class="buy">Bullish: Buys only</button>
+<button data-v="sell" class="sell">Bearish: Sells only</button>
+<button data-v="none">Ranging: No trade</button>
+</div>
+<div style="margin-top:10px">
+<label class="item"><input type="checkbox" data-k="d1"><div>Daily trend is clear<small>Higher highs/lows or lower highs/lows</small></div></label>
+<label class="item"><input type="checkbox" data-k="d2"><div>4H agrees with the Daily</div></label>
+</div>
+</div>
+</section>
+
+<section class="card locked" id="s2">
+<div class="tb"><b></b><b></b><span>step-2-4h-zone.html</span></div>
+<div class="body">
+<div class="step"><div class="num">2</div><h2>4H zone</h2></div>
+<label class="item"><input type="checkbox" data-k="z1"><div>Demand (buys) / Supply (sells) zone marked in bias direction</div></label>
+<label class="item"><input type="checkbox" data-k="z2"><div>Zone has imbalance (FVG) or liquidity<small>Neither? It’s not a valid zone</small></div></label>
+<label class="item"><input type="checkbox" data-k="z3"><div>Price has respected the zone<small>Reacted from it, didn’t slice through</small></div></label>
+<div class="or">or</div>
+<label class="item"><input type="checkbox" data-k="bb"><div>Breaker block in bias direction, and price is reacting to it</div></label>
+</div>
+</section>
+
+<section class="card locked" id="s3">
+<div class="tb"><b></b><b></b><span>step-3-lower-timeframe.html</span></div>
+<div class="body">
+<div class="step"><div class="num">3</div><h2>Lower timeframe</h2></div>
+<label class="item"><input type="checkbox" data-k="l1"><div>Price is inside or reacting at the 4H zone / breaker</div></label>
+<label class="item"><input type="checkbox" data-k="l2"><div>LTF demand/supply zone marked in bias direction</div></label>
+<label class="item"><input type="checkbox" data-k="l3"><div>LTF zone has imbalance and/or liquidity</div></label>
+<label class="item"><input type="checkbox" data-k="l4"><div>Price is testing the LTF zone</div></label>
+<label class="item" id="cisdRow"><input type="checkbox" data-k="cisd"><div>CISD confirmed<small id="cisdNote">Required</small></div></label>
+</div>
+</section>
+
+<section class="card locked" id="s4">
+<div class="tb"><b></b><b></b><span>step-4-your-rules.html</span></div>
+<div class="body">
+<div class="step"><div class="num">4</div><h2>Your rules</h2></div>
+<div class="row">
+<div class="field"><span>Entry timeframe</span><select id="tf"><option>15m</option><option>5m</option><option>1m</option></select></div>
+<div class="field"><span>CISD is</span><select id="cisdMode"><option value="req">Required</option><option value="opt">Optional</option></select></div>
+<div class="field"><span>Stop loss goes</span><select id="sl"><option>Beyond LTF zone</option><option>Beyond 4H zone</option></select></div>
+<div class="field"><span>Invalidation: this idea is wrong if…</span><input type="text" id="inv" placeholder="e.g. 4H close below zone"></div>
+</div>
+</div>
+</section>
+
+</div></main>
+<div class="foot" id="stats"></div>
+</div>
+
+<div class="verdict"><div class="vin">
+<div class="vt" id="vt">Pick a direction</div>
+<div class="bar"><i id="bi"></i></div>
+<button class="go" id="go" disabled>Log trade</button>
+</div></div>
+
+<script>
+(function(){
+var S={bias:null,c:{},tf:"15m",cm:"req",sl:"Beyond LTF zone",inv:"",taken:0,skipped:0,theme:null};
+var KEY="pretrade_v1";
+function load(){try{var r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function $(id){return document.getElementById(id)}
+function qa(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
+load();
+if(S.theme)document.documentElement.setAttribute("data-theme",S.theme);
+
+function ok(){
+ var c=S.c,r={};
+ r.s1=S.bias&&S.bias!=="none"&&c.d1&&c.d2;
+ r.s2=r.s1&&c.z1&&c.z2&&c.z3||r.s1&&c.bb;
+ r.s3=r.s2&&c.l1&&c.l2&&c.l3&&c.l4&&(S.cm==="opt"||c.cisd);
+ r.s4=r.s3&&S.inv.trim().length>2;
+ return r;
+}
+function render(){
+ qa("#bias button").forEach(function(b){b.classList.toggle("on",b.dataset.v===S.bias)});
+ qa("input[data-k]").forEach(function(i){i.checked=!!S.c[i.dataset.k]});
+ $("tf").value=S.tf;$("cisdMode").value=S.cm;$("sl").value=S.sl;
+ if($("inv").value!==S.inv)$("inv").value=S.inv;
+ $("cisdNote").textContent=S.cm==="req"?"Required":"Optional: bonus confirmation";
+ var r=ok();
+ $("s2").classList.toggle("locked",!r.s1);
+ $("s3").classList.toggle("locked",!r.s2);
+ $("s4").classList.toggle("locked",!r.s3);
+ ["s1","s2","s3","s4"].forEach(function(k){$(k).classList.toggle("done",!!r[k])});
+ var n=[r.s1,r.s2,r.s3,r.s4].filter(Boolean).length;
+ var go=n===4;
+ $("bi").style.width=(n*25)+"%";
+ $("bi").style.background=go?"var(--buy)":"var(--accent)";
+ var t;
+ if(S.bias==="none")t="Ranging: no trade";
+ else if(!S.bias)t="Pick a direction";
+ else if(go)t=(S.bias==="buy"?"BUY":"SELL")+" setup valid. Execute.";
+ else t="Step "+(n+1)+" of 4";
+ $("vt").textContent=t;
+ $("go").disabled=!go;
+ $("stats").textContent="Valid setups logged: "+S.taken+"  ·  Reset without trading: "+S.skipped;
+ save();
+}
+qa("#bias button").forEach(function(b){b.onclick=function(){S.bias=b.dataset.v;render()}});
+qa("input[data-k]").forEach(function(i){i.onchange=function(){S.c[i.dataset.k]=i.checked;render()}});
+$("tf").onchange=function(){S.tf=this.value;render()};
+$("cisdMode").onchange=function(){S.cm=this.value;render()};
+$("sl").onchange=function(){S.sl=this.value;render()};
+$("inv").oninput=function(){S.inv=this.value;render()};
+function clear(){S.bias=null;S.c={};S.inv="";}
+$("reset").onclick=function(){
+ var started=S.bias||Object.keys(S.c).some(function(k){return S.c[k]});
+ if(started)S.skipped++;clear();render();window.scrollTo(0,0)};
+$("go").onclick=function(){S.taken++;clear();render();window.scrollTo(0,0)};
+$("theme").onclick=function(){
+ var cur=document.documentElement.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+ S.theme=cur==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",S.theme);save()};
+render();
+})();
+</script>
+</body>
+</html>
